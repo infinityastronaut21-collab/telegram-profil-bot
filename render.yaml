@@ -1,0 +1,9 @@
+services:
+  - type: worker
+    name: telegram-profil-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    envVars:
+      - key: 8262038457:AAFyItKNmtr2l1bNZcfBbCSYebwA7lpcXrM
+        sync: false  # Tu le rempliras dans l'interface Render
