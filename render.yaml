@@ -5,5 +5,6 @@ services:
     buildCommand: pip install -r requirements.txt
     startCommand: python bot.py
     envVars:
-      - key: 8262038457:AAFyItKNmtr2l1bNZcfBbCSYebwA7lpcXrM
+      - key: BOT_TOKEN
+
         sync: false  # Tu le rempliras dans l'interface Render
