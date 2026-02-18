@@ -10,8 +10,12 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Token depuis les variables d'environnement (sécurisé)
-TOKEN = os.environ.get("8262038457:AAFyItKNmtr2l1bNZcfBbCSYebwA7lpcXrM")
+# Token depuis les variables d'environnement (SÉCURISÉ)
+TOKEN = os.environ.get("BOT_TOKEN")
+
+if not TOKEN:
+    logger.error("❌ BOT_TOKEN non défini !")
+    raise ValueError("BOT_TOKEN manquant dans les variables d'environnement")
 
 # Dictionnaire pour stocker les membres par groupe
 membres_groupes = {}
@@ -141,10 +145,6 @@ async def error_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
 
 def main() -> None:
     """Démarrage du bot"""
-    if not TOKEN:
-        logger.error("BOT_TOKEN non défini !")
-        return
-    
     application = Application.builder().token(TOKEN).build()
     
     # Enregistrer les membres
@@ -159,7 +159,7 @@ def main() -> None:
     
     logger.info("🚀 Bot démarré sur Render !")
     
-    # Démarrer le bot (webhook pour Render)
+    # Démarrer le bot
     application.run_polling(allowed_updates=Update.ALL_TYPES)
 
 
